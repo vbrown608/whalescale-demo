@@ -1,0 +1,8 @@
+on: [push]
+
+steps:
+- uses: actions/checkout@v2
+- uses: vbrown/whalescale@v1
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    defaultTag: "alpine:3.11"
