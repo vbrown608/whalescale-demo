@@ -6,7 +6,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: vbrown608/whalescale@v1
+      - uses: vbrown608/whalescale@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           defaultTag: "alpine:3.11"
