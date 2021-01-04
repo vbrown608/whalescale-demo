@@ -7,7 +7,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build -t netlify/build:$GITHUB_SHA .
       - uses: vbrown608/whalescale@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          currentTag: netlify/build:{{ github.sha }}
           defaultTag: "alpine:3.11"
