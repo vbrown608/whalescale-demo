@@ -12,5 +12,5 @@ jobs:
       - uses: vbrown608/whalescale@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          currentTag: netlify/build:{{ github.sha }}
+          currentTag: netlify/build:${{ github.sha }}
           defaultTag: "alpine:3.11"
