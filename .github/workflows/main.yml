@@ -1,8 +1,16 @@
+name: Image
 on: [push]
 
-steps:
-- uses: actions/checkout@v2
-- uses: vbrown/whalescale@v1
-  with:
-    token: ${{ secrets.GITHUB_TOKEN }}
-    defaultTag: "alpine:3.11"
+jobs:
+  whalescale:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build -t netlify/build:$GITHUB_SHA .
+      - uses: vbrown608/whalescale@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          currentTag: netlify/build:${{ github.sha }}
+          defaultTag: "alpine:3.12"
